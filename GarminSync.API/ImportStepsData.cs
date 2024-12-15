@@ -1,5 +1,6 @@
 ﻿using Azure;
 using Azure.Data.Tables;
+using Azure.Identity;
 using Garmin.Connect;
 using Garmin.Connect.Auth;
 using GarminSync.API.Models;
@@ -10,13 +11,13 @@ using Microsoft.Extensions.Options;
 
 namespace GarminSync.API;
 
-public class DownloadStepsData(
-    ILogger<DownloadStepsData> logger,
+public class ImportStepsData(
+    ILogger<ImportStepsData> logger,
     IOptions<AzureSettings> azureSettings,
     IOptions<GarminConnectSettings> garminConnectSettings)
 {
-    [Function("DownloadStepsData")]
-    public async Task Run([TimerTrigger("0 0 */1 * * *", RunOnStartup = true)] TimerInfo myTimer)
+    [Function("ImportStepsData")]
+    public async Task Run([TimerTrigger("0 0 */1 * * *", RunOnStartup = false)] TimerInfo myTimer)
     {
         var userSettings = garminConnectSettings.Value;
         var tableSettings = azureSettings.Value;
@@ -32,7 +33,7 @@ public class DownloadStepsData(
         var tableClient = new TableClient(
             new Uri(tableSettings.TablesUrl),
             tableSettings.TableName,
-            new TableSharedKeyCredential(tableSettings.StorageAccountName, tableSettings.StorageAccountSharedKey));
+            new DefaultAzureCredential());
 
         foreach (var stepsDataChunk in stepsData.Where(sd => sd.Steps > 0))
         {

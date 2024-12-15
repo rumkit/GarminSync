@@ -2,8 +2,6 @@ namespace GarminSync.API.Settings;
 
 public class AzureSettings
 {
-    public string TablesUrl { get; set; }
-    public string TableName { get; set; }
-    public string StorageAccountName { get; set; }
-    public string StorageAccountSharedKey { get; set; }
+    public string TablesUrl { get; init; } = string.Empty;
+    public string TableName { get; init; } = string.Empty;
 }
