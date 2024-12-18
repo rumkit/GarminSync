@@ -17,7 +17,7 @@ public class ImportStepsData(
     IOptions<GarminConnectSettings> garminConnectSettings)
 {
     [Function("ImportStepsData")]
-    public async Task Run([TimerTrigger("0 0 */1 * * *", RunOnStartup = false)] TimerInfo myTimer)
+    public async Task Run([TimerTrigger("0 0 */6 * * *", RunOnStartup = false)] TimerInfo myTimer)
     {
         var userSettings = garminConnectSettings.Value;
         var tableSettings = azureSettings.Value;
