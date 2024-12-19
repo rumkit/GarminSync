@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_fagarminsync_name": {
+            "value": null
+        },
+        "vaults_kv_garminsync_name": {
+            "value": null
+        },
+        "components_fagarminsync_name": {
+            "value": null
+        },
+        "storageAccounts_sagarminsync_name": {
+            "value": null
+        },
+        "serverfarms_ASP_rggarminsync_ae9f_name": {
+            "value": null
+        },
+        "actionGroups_Application_Insights_Smart_Detection_name": {
+            "value": null
+        },
+        "workspaces_DefaultWorkspace_a7151d11_0f24_45b6_bda9_6a3b6ce06ede_ITN_externalid": {
+            "value": null
+        }
+    }
+}
